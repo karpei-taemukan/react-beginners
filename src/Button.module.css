@@ -1,0 +1,8 @@
+.btn {
+  color: beige;
+  background-color: cornflowerblue;
+  font-size: 60px;
+  border: 2px solid;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
