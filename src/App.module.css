@@ -3,8 +3,8 @@ div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Courier New", Courier, monospace;
 }
 .title {
-  font-family: "Courier New", Courier, monospace;
   font-size: 30px;
 }
