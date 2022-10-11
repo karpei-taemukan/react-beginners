@@ -2,7 +2,28 @@ import Button from "./Button";
 import styles from "./App.module.css";
 import {useState, useEffect} from "react";
 
+const useInput = (initialValue,validator) => {
+  const [value, setValue] = useState(initialValue);
+  const onChange = (event) => {
+   // console.log(e.target.value);
+   const {target:{value}} = event;
+   let willUpdate = true;
 
+    if(typeof validator === "function"){
+      willUpdate = validator(value);
+      //console.log(validator(value));
+      // true false에 의해 함수의 실행을 결정 
+    }
+
+   if(willUpdate){
+    setValue(value);
+    //console.log(initialValue);
+    //console.log(value);
+   }
+  
+  }
+  return {value, onChange};
+}
 
 function Hello(){
 
@@ -31,6 +52,10 @@ function App() {
   const onChange = (event) => {setKeyword(event.target.value)};
   const clickOn = () => setShowing((prev) => !prev);
  
+
+  const maxLen = (value) => { return value.length <=10 }; 
+  const name = useInput("Mr.", maxLen);
+
   useEffect(() => console.log("render once"), []);
   useEffect(() => console.log("only count", counter), [counter]);
   //useEffect()는 코드가 한번만 실행될수 있도록 보호해준다
@@ -47,6 +72,7 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
 
        {showing ? <Hello />:null}
        <button onClick={clickOn}>{showing ? "Hide":"Show"}</button>
+       <input placeholder="name" {...name}/>
     </div>
 
   );
