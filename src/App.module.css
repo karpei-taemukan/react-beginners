@@ -1,9 +1,11 @@
+
 div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
   font-family: "Courier New", Courier, monospace;
+  gap: 10px;
 }
 .title {
   font-size: 30px;

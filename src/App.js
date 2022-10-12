@@ -40,6 +40,19 @@ useEffect(createdFn, []);
   return <h1>Hello</h1>
 }
 
+
+const content = [
+  {
+    tab: "Section 1",
+    content: "Section 1 Content"
+  },
+  {
+    tab: "Section 2",
+    content: "Section 2 Content"
+  }
+];
+
+
 function App() {
   const body = document.querySelector("body");
   body.style.backgroundColor = "green";
@@ -56,6 +69,12 @@ function App() {
   const maxLen = (value) => { return value.length <=10 }; 
   const name = useInput("Mr.", maxLen);
 
+
+  const {currentItem, changeItem} = useTabs(0,content);
+console.log(currentItem)
+console.log(changeItem)
+ 
+
   useEffect(() => console.log("render once"), []);
   useEffect(() => console.log("only count", counter), [counter]);
   //useEffect()는 코드가 한번만 실행될수 있도록 보호해준다
@@ -63,6 +82,8 @@ function App() {
   if(keyword !== "" && keyword.length > 5){console.log("only search", keyword)}
 }, [keyword]);
 useEffect(() => console.log("run count, keyword"), [counter,keyword]);
+
+
   return (
     <div>
       <input onChange={onChange} value={keyword} type="text" placeholder="Search here"/>
@@ -73,6 +94,8 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
        {showing ? <Hello />:null}
        <button onClick={clickOn}>{showing ? "Hide":"Show"}</button>
        <input placeholder="name" {...name}/>
+
+
     </div>
 
   );
