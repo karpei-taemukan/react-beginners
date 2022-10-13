@@ -41,7 +41,7 @@ useEffect(createdFn, []);
 }
 
 
-const content = [
+/*const content = [
   {
     tab: "Section 1",
     content: "Section 1 Content"
@@ -50,7 +50,7 @@ const content = [
     tab: "Section 2",
     content: "Section 2 Content"
   }
-];
+];*/
 
 
 function App() {
@@ -59,7 +59,7 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [keyword, setKeyword] = useState("");
   const [showing, setShowing] = useState(false);
-
+  const [number, setNumber] = useState([]);
 
   const onClick = () => setCounter((counter) => counter+1);
   const onChange = (event) => {setKeyword(event.target.value)};
@@ -69,10 +69,17 @@ function App() {
   const maxLen = (value) => { return value.length <=10 }; 
   const name = useInput("Mr.", maxLen);
 
+  const addNumber = () => {
+    setNumber([
+      ...number, /* 그전의 값을 갱신할려면 저장해야함*/
+      {
+      random: Math.random() * 10
+    }]);
+  }
 
-  const {currentItem, changeItem} = useTabs(0,content);
+/*const {currentItem, changeItem} = useTabs(0,content);
 console.log(currentItem)
-console.log(changeItem)
+console.log(changeItem)*/
  
 
   useEffect(() => console.log("render once"), []);
@@ -95,7 +102,10 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
        <button onClick={clickOn}>{showing ? "Hide":"Show"}</button>
        <input placeholder="name" {...name}/>
 
-
+      <button onClick={addNumber}>Random in 10</button>
+      <ul>
+      {number.map((item,index) => (<li key={index}>{item.random}</li>))}
+    </ul>
     </div>
 
   );
