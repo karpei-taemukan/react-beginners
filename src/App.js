@@ -1,6 +1,8 @@
 import Button from "./Button";
 import styles from "./App.module.css";
 import {useState, useEffect} from "react";
+import Login from "./Login";
+import Ref from "./Ref";
 
 const useInput = (initialValue,validator) => {
   const [value, setValue] = useState(initialValue);
@@ -106,6 +108,8 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
       <ul>
       {number.map((item,index) => (<li key={index}>{item.random}</li>))}
     </ul>
+    <Login />
+    <Ref />
     </div>
 
   );
