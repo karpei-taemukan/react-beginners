@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
 
 const useClick = (onClick) => {
@@ -24,8 +24,7 @@ useEffect(()=>{
             // componentWilUnmount 일때는 return을 한다
             element.current.removeEventListener("click", onClick);
         } 
-    }
-}, []) // [](dependency) 가 없다면 매번 업데이트될때마다 EventListener 추가됨
+    }}, [onClick]) // [](dependency) 가 없다면 매번 업데이트될때마다 EventListener 추가됨
 if(typeof onClick !== "function"){
     return;
 }    

@@ -3,6 +3,8 @@ import styles from "./App.module.css";
 import {useState, useEffect} from "react";
 import Login from "./Login";
 import Ref from "./Ref";
+import Confirm from "./Confirm";
+import Prevent from "./Prevent";
 
 const useInput = (initialValue,validator) => {
   const [value, setValue] = useState(initialValue);
@@ -110,6 +112,8 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
     </ul>
     <Login />
     <Ref />
+    <Confirm />
+    <Prevent />
     </div>
 
   );
