@@ -1,4 +1,7 @@
-
+body{
+  height: 1000vh;
+  width: 100vw;
+}
 div {
   display: flex;
   flex-direction: column;

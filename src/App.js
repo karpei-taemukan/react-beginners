@@ -7,6 +7,8 @@ import Confirm from "./Confirm";
 import Prevent from "./Prevent";
 import Leave from "./Leave";
 import FadeIn from "./FadeIn";
+import Network from "./Network";
+import Scroll from "./Scroll";
 
 const useInput = (initialValue,validator) => {
   const [value, setValue] = useState(initialValue);
@@ -116,8 +118,10 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
     <Ref />
     <Confirm />
     <Prevent />
+    <Scroll />
     <Leave />
     <FadeIn />
+    <Network />
     </div>
 
   );
