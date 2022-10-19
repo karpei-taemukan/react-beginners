@@ -9,6 +9,7 @@ import Leave from "./Leave";
 import FadeIn from "./FadeIn";
 import Network from "./Network";
 import Scroll from "./Scroll";
+import FullScreen from "./FullScreen";
 
 const useInput = (initialValue,validator) => {
   const [value, setValue] = useState(initialValue);
@@ -122,6 +123,7 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
     <Leave />
     <FadeIn />
     <Network />
+    <FullScreen />
     </div>
 
   );
