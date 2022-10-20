@@ -10,6 +10,7 @@ import FadeIn from "./FadeIn";
 import Network from "./Network";
 import Scroll from "./Scroll";
 import FullScreen from "./FullScreen";
+import Notification from "./Notification";
 
 const useInput = (initialValue,validator) => {
   const [value, setValue] = useState(initialValue);
@@ -124,6 +125,7 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
     <FadeIn />
     <Network />
     <FullScreen />
+    <Notification />
     </div>
 
   );
