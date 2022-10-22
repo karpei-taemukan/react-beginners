@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 
 const useBeforeLeave = (onBefore) => {
 const handle = (e) => {
-if(e.clientY < 0){
+if(window.clientY < 0){
     onBefore();
 }
 }

@@ -1,25 +1,25 @@
 
-const useNotification = () =>{
+const useNotification = (title, option) =>{
     if(!(window.Notification)){
         return ;
     }
-    const fireNotifi = (title, option) => {
-    if(Notification.permission !== "granted"){
-     Notification.requestPermission().then(premission => {
-            if(premission === "granted"){
-                new Notification(title, option);
+    const fireNotifi = () => {
+    if(window.Notification.permission !== "granted"){
+     window.Notification.requestPermission.then(premission => {
+         if(premission === "granted"){
+              new window.Notification(title, option);
             }else{
                 return;
             }
         })
     }else{
-        new Notification(title, option);
+         new window.Notification(title, option);
     }
 }
 return fireNotifi;
 }
 function Notification(){
-    const notifi = useNotification("HI, HOW ARE YOU", {body: "HAHAHA"});
+    const notifi = useNotification("HI, HOW ARE YOU", {body: "HAHAHA", icon: "https://chrisdavidmills.github.io/emogotchi/img/well-adjusted.png"});
     return (
     <div>
 <button onClick={notifi}>NOTIFICATION</button>

@@ -11,6 +11,7 @@ import Network from "./Network";
 import Scroll from "./Scroll";
 import FullScreen from "./FullScreen";
 import Notification from "./Notification";
+import Axios from "./Axios";
 
 const useInput = (initialValue,validator) => {
   const [value, setValue] = useState(initialValue);
@@ -64,6 +65,8 @@ useEffect(createdFn, []);
 
 
 function App() {
+  const {loading, data, error, refetch} = Axios({url:"https://yts.mx/api/v2/list_movies.json"})
+  console.log(loading,"\n", error,"\n", JSON.stringify(data));
   const body = document.querySelector("body");
   body.style.backgroundColor = "green";
   const [counter, setCounter] = useState(0);
@@ -103,6 +106,9 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
 
   return (
     <div>
+      <h1>{data && data.status}</h1>
+      <h2>{loading && "Loading"}</h2>
+      <button onClick={refetch}>refetch</button>
       <input onChange={onChange} value={keyword} type="text" placeholder="Search here"/>
        <h1 className={styles.title}>Welcome React!!</h1>
        <h2>{counter}</h2>
@@ -126,6 +132,7 @@ useEffect(() => console.log("run count, keyword"), [counter,keyword]);
     <Network />
     <FullScreen />
     <Notification />
+
     </div>
 
   );
